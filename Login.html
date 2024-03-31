@@ -1,37 +1,40 @@
+<!DOCTYPE html>
 <html>
-    <head>
-		<link rel="icon" href="D:\Tugas Kuliah Semester 4\Praktikum Pemweb\BAB 1\BAB 1 Tugas\Images\Vintage and Retro Holiday Travel Agent Logo.png" />
-		<title>Login</title>
-	</head>
-	<body>
-	<center>
-		<header>
-		   <nav>
-			<div class="logo">
-			  <img src="D:\Tugas Kuliah Semester 4\Praktikum Pemweb\BAB 1\BAB 1 Tugas\Images\Vintage and Retro Holiday Travel Agent Logo (1).png" alt="Logo" width="150px" />
-			</div>
-			<a href="index.html">Home</a>
-			<a href="Register.html">Sign Up</a>
-			<a href="login.html">Login</a>
-		   </nav>
-		</header>
-		<main>
-      	   <div class="form-login">
-		     <h3>Login</h3>
-		     <table>
-                <tr>
-                    <td><input type="text" name="username" placeholder="Username" /></td>
-                </tr>
-                <tr>
-                    <td><input type="password" name="password" placeholder="Password" /></td>
-                </tr>
-            </table>
-            <button type="submit">Login</button>
-		</main>
-		<footer>
-			<h4>&copy; Lombok TravelGo 2024</h4>
-		</footer>
-	</center>
-	</body>
-
+<head>
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="D:\Tugas Kuliah Semester 4\Praktikum Pemweb\Project Lombok TravelGo\css\style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="D:\Tugas Kuliah Semester 4\Praktikum Pemweb\Project Lombok TravelGo\Images\LOMBOK TRAVEL.png" alt="Logo" width="150px" />
+            </div>
+            <a href="index.html">Home</a>
+            <a href="Register.html">Sign Up</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+    <main>
+        <div class="form-login">
+			<center>
+            <h3>Login</h3>
+            <form action="login.php" method="post">
+                <table>
+                    <tr>
+                        <td><input type="text" name="username" placeholder="Username" required /></td> 
+                    <tr>
+                        <td><input type="password" name="password" placeholder="Password" required /></td>
+                    </tr>
+                </table>
+                <button type="submit">Login</button>
+			</center>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <h4>&copy; Lombok TravelGo 2024</h4>
+    </footer>
+</body>
 </html>
