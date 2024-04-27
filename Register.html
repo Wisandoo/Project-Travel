@@ -22,31 +22,31 @@
 <main>
     <div class="form-container">
         <h3>Sign Up</h3>
-        <form action="/submit-signup" method="post">
+        <form id="signupForm">
             <table>
                 <tr>
                     <td>
-                        <input type="text" name="fn" placeholder="Full Name">
+                        <input type="text" id="fullName" name="fn" placeholder="Full Name">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="email" name="email" placeholder="Email">
+                        <input type="email" id="email" name="email" placeholder="Email">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="tel" name="pn" placeholder="Phone Number">
+                        <input type="tel" id="phoneNumber" name="pn" placeholder="Phone Number">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" name="username" placeholder="Username">
+                        <input type="text" id="username" name="username" placeholder="Username">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="password" name="password" placeholder="Password">
+                        <input type="password" id="password" name="password" placeholder="Password">
                     </td>
                 </tr>
             </table>
@@ -57,5 +57,36 @@
 <footer>
     <h4>&copy; Lombok TravelGo 2024</h4>
 </footer>
+
+<script>
+    document.getElementById('signupForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Mencegah pengiriman form secara default
+
+        // Mengambil nilai dari input
+        var fullName = document.getElementById('fullName').value;
+        var email = document.getElementById('email').value;
+        var phoneNumber = document.getElementById('phoneNumber').value;
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+
+        // Membuat objek untuk data pengguna yang didaftarkan
+        var userData = {
+            fullName: fullName,
+            email: email,
+            phoneNumber: phoneNumber,
+            username: username,
+            password: password
+        };
+
+        // Menyimpan data pengguna ke dalam local storage
+        localStorage.setItem('userData', JSON.stringify(userData));
+
+        // Memberikan pesan sukses
+        alert('Registration successful!');
+
+        // Redirect ke halaman login atau halaman lain jika diperlukan
+        window.location.href = "login.html";
+    });
+</script>
 </body>
 </html>

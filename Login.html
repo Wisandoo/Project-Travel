@@ -18,23 +18,53 @@
     </header>
     <main>
         <div class="form-login">
-			<center>
-            <h3>Login</h3>
-            <form action="login.php" method="post">
-                <table>
-                    <tr>
-                        <td><input type="text" name="username" placeholder="Username" required /></td> 
-                    <tr>
-                        <td><input type="password" name="password" placeholder="Password" required /></td>
-                    </tr>
-                </table>
-                <button type="submit">Login</button>
-			</center>
-            </form>
+            <center>
+                <h3>Login</h3>
+                <form id="loginForm">
+                    <table>
+                        <tr>
+                            <td><input type="text" id="username" name="username" placeholder="Username" required /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="password" id="password" name="password" placeholder="Password" required /></td>
+                        </tr>
+                    </table>
+                    <button type="submit">Login</button>
+                </form>
+            </center>
         </div>
     </main>
     <footer>
         <h4>&copy; Lombok TravelGo 2024</h4>
     </footer>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah pengiriman form secara default
+
+            // Mengambil nilai dari input
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Mendapatkan data pengguna dari local storage
+            var userData = JSON.parse(localStorage.getItem('userData'));
+
+            // Memeriksa apakah data pengguna ada di local storage
+            if (userData) {
+                // Memeriksa apakah informasi login cocok dengan data yang tersimpan
+                if (username === userData.username && password === userData.password) {
+                    // Jika cocok, beri pesan sukses dan redirect ke halaman yang sesuai
+                    alert('Login successful!');
+                    window.location.href = "dashboard.html"; // Ganti dengan halaman yang sesuai
+                } else {
+                    // Jika tidak cocok, beri pesan kesalahan
+                    alert('Username atau password salah. Silakan coba lagi.');
+                }
+            } else {
+                // Jika tidak ada data pengguna di local storage, beri pesan bahwa belum ada yang terdaftar
+                alert('Anda belum mendaftar. Silakan daftar terlebih dahulu.');
+            }
+        });
+    </script>
 </body>
 </html>
