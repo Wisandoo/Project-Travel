@@ -143,8 +143,8 @@
     <div class="row">
         <div class="sidebar">
             <ul>
-                <li><a href="D:\Tugas Kuliah Semester 4\Praktikum Pemweb\Project Lombok TravelGo\admin.html">Dashboard</a></li>
-                <li><a href="D:\Tugas Kuliah Semester 4\Praktikum Pemweb\Project Lombok TravelGo\Customer\Data.html">Traveler Table</a></li>
+                <li><a href="admin.php">Dashboard</a></li>
+                <li><a href="Customer\Data.php">Traveler Table</a></li>
             </ul>
         </div>
         <div class="content">

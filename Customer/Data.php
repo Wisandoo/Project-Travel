@@ -122,7 +122,7 @@
     <div class="container">
         <div class="sidebar">
             <ul>
-                <li><a href="D:\Tugas Kuliah Semester 4\Praktikum Pemweb\Project Lombok TravelGo\admin.html">Dashboard</a></li>
+                <li><a href="admin.php">Dashboard</a></li>
             </ul>
         </div>
         <table>
@@ -155,7 +155,7 @@
                 </tr>
             </tbody>
         </table>
-        <button class="add-button" onclick="window.location.href='Customer.html'">Tambah Data Customer</button>
+        <button class="add-button" onclick="window.location.href='Customer.php'">Tambah Data Customer</button>
     </div>
 </body>
 </html>
