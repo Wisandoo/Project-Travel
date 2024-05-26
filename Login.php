@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'connect.php'; // Pastikan file ini berisi koneksi ke database
 
 // Fungsi untuk memeriksa apakah pengguna sudah login
 function isUserLoggedIn() {
@@ -8,22 +9,22 @@ function isUserLoggedIn() {
 
 // Jika pengguna telah mengirimkan formulir login
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Username dan password yang diterima dari formulir
+    // Ambil username dan password dari input formulir
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Simulasikan pengecekan dengan database atau data pengguna yang disimpan di tempat lain
-    // Di sini, kami akan menggunakan data statis untuk simulasi
-    $storedUsername = "admin"; // Ganti dengan username yang sebenarnya
-    $storedPassword = "password123"; // Ganti dengan password yang sebenarnya
+    // Query untuk memeriksa username dan password di database
+    $sql = "SELECT * FROM tb_admin WHERE username = '$username' AND password = '$password'";
+    $result = mysqli_query($connect, $sql);
 
-    // Jika username dan password sesuai
-    if ($username === $storedUsername && $password === $storedPassword) {
-        // Atur session
+    if (mysqli_num_rows($result) > 0) {
+        // Jika username dan password cocok, set session
         $_SESSION['username'] = $username;
 
-        // Atur cookie jika diperlukan
-        // Contoh: atur cookie dengan nama 'username' dan nilai username pengguna
+        // Set session untuk pesan selamat datang
+        $_SESSION['welcome_message'] = "Selamat Datang $username";
+
+        // Atur cookie 
         setcookie("username", $username, time() + (86400 * 30), "/"); // Cookie berlaku selama 30 hari
 
         // Redirect ke halaman dashboard
@@ -31,7 +32,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     } else {
         // Jika username atau password tidak sesuai, beri pesan kesalahan
-        $errorMessage = "Username atau password salah. Silakan coba lagi.";
+        echo "
+        <script>
+        alert('Username atau Password tidak sesuai');
+        </script>
+        ";
     }
 }
 ?>

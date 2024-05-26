@@ -144,7 +144,7 @@
         <div class="sidebar">
             <ul>
                 <li><a href="admin.php">Dashboard</a></li>
-                <li><a href="Customer\Data.php">Traveler Table</a></li>
+                <li><a href="Data.php">Traveler Table</a></li>
             </ul>
         </div>
         <div class="content">

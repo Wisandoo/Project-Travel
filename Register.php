@@ -1,6 +1,6 @@
 <?php
-session_start();
 
+include 'connect.php';
 // Jika pengguna telah mengirimkan formulir pendaftaran
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ambil nilai dari input
@@ -10,19 +10,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Simulasikan penyimpanan data pengguna ke dalam database atau tempat penyimpanan lainnya
-    // Di sini, saya hanya akan menampilkan informasi yang diinputkan oleh pengguna untuk simulasi
+    // Validasi input
+    if (empty($fullName) || empty($email) || empty($phoneNumber) || empty($username) || empty($password)) {
+        echo "
+            <script>
+                alert('Pastikan Anda Mengisi Semua Data');
+                window.location = 'Register.php';
+            </script>
+        ";
+    } else {
+        // Menyimpan data pengguna ke dalam database
+        $sql = "INSERT INTO tb_admin (fullName, email, phoneNumber, username, password) VALUES ('$fullName', '$email', '$phoneNumber', '$username', '$password')";
+        
+        if (mysqli_query($connect, $sql)) {
+            echo "  
+                <script>
+                    alert('Registrasi Berhasil !!');
+                    window.location = 'Login.php';
+                </script>
+            ";
+        } else {
+            echo "
+                <script>
+                    alert('Terjadi Kesalahan');
+                    window.location = 'Register.php';
+                </script>
+            ";
+        }
 
-    // Simpan informasi pengguna ke dalam session jika diperlukan
-    $_SESSION['username'] = $username;
+        // Simpan informasi pengguna ke dalam session jika diperlukan
+        $_SESSION['username'] = $username;
+        $_SESSION['password'] = $password;
 
-    // Atur cookie jika diperlukan
-    // Contoh: atur cookie dengan nama 'username' dan nilai username pengguna
-    setcookie("username", $username, time() + (86400 * 30), "/"); // Cookie berlaku selama 30 hari
-
-    // Redirect ke halaman login atau halaman lain jika diperlukan
-    header("Location: login.php");
-    exit;
+        // atur cookie dengan nama 'username' dan nilai username pengguna
+        setcookie("username", $username, time() + (86400 * 30), "/"); // Cookie berlaku selama 30 hari
+    }
 }
 ?>
 
