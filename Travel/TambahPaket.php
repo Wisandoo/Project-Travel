@@ -41,6 +41,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Tambah Paket Travel</title>
     <link rel="stylesheet" href="../css/admin.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .widget {
+            padding: 20px;
+            background-color: #f1f1f1;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .widget h3 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .widget p {
+            margin: 5px 0 0;
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
     <div class="header">

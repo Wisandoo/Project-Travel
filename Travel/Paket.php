@@ -44,6 +44,7 @@ $result = mysqli_query($connect, $query);
             <div class="container">
                 <h2>Daftar Paket Travel</h2>
                 <a href="TambahPaket.php" class="btn btn-primary mb-3">Tambah Data</a>
+                <a href="cetak_paket.php" class="btn btn-primary mb-3">Cetak PDF</a>
                 <table class="table table-bordered">
                     <thead>
                         <tr>

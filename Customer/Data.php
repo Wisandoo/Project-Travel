@@ -1,3 +1,10 @@
+<?php
+include '../connect.php';
+
+$query = "SELECT * FROM tb_Pelanggan";
+$result = mysqli_query($connect, $query);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +17,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
@@ -122,13 +129,12 @@
     <div class="container">
         <div class="sidebar">
             <ul>
-                <li><a href="admin.php">Dashboard</a></li>
+                <li><a href="../admin.php">Dashboard</a></li>
             </ul>
         </div>
         <table>
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
                     <th scope="col">Nama Lengkap</th>
                     <th scope="col">Jenis Kelamin</th>
                     <th scope="col">Umur</th>
@@ -137,22 +143,21 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>John Doe</td>
-                    <td>Laki-Laki</td>
-                    <td>25</td>
-                    <td>$100</td>
-                    <td>March 25, 2024</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jane Smith</td>
-                    <td>Perempuan</td>
-                    <td>30</td>
-                    <td>$200</td>
-                    <td>April 1, 2024</td>
-                </tr>
+                <?php
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<tr>";
+                        echo "<td>" . htmlspecialchars($row['namaLengkap']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['jenisKelamin']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['umur']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['hargaPaket']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['tanggal']) . "</td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='6'>No data found</td></tr>";
+                }
+                ?>
             </tbody>
         </table>
         <button class="add-button" onclick="window.location.href='Customer.php'">Tambah Data Customer</button>

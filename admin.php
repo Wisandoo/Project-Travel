@@ -1,17 +1,24 @@
 <?php
 session_start();
+include 'connect.php';
 // Pastikan user sudah login
 if (!isset($_SESSION['username'])) {
     header("Location: login.php");
     exit;
 }
 $username = $_SESSION['username'];
+
+$query_count = "SELECT COUNT(*) AS total FROM travel_packs";
+$result_count = mysqli_query($connect, $query_count);
+$row_count = mysqli_fetch_assoc($result_count);
+$total_packs = $row_count['total'];
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
   <title>Admin Dashboard</title>
+  
   <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
@@ -39,6 +46,10 @@ $username = $_SESSION['username'];
                     <div class="welcome-image">
                         <img src="Images/LOMBOK TRAVEL.png" alt="Lombok Travel">
                     </div>
+                </div>
+                <div class="main-content" style="background : #82e0ff">
+                    <h3>Total Paket Travel</h3>
+                    <p><?php echo $total_packs; ?></p>
                 </div>
             </div>
         </div>
